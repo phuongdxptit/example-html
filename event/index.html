@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo Lists</title>
+</head>
+<body>
+    <input type="text" id="new-item" placeholder="Add item">
+    <button id="btn">Add</button>
+    <ul id="todo-list">
+
+    </ul>
+    <script type="text/javascript">
+        var todoList = [
+            'Take a shower',
+            'have a walk',
+            'Go to bed'
+        ];
+        var btn = document.getElementById('btn');
+        btn.addEventListener('click', addItem);
+        function addItem(){
+            var input = document.getElementById('new-item');
+            var newItem = input.value;
+            todoList.push(newItem);
+            render();
+            input.value = '';
+        }
+
+        function render(){
+            var htmlList = document.getElementById('todo-list');
+            var content = todoList.map(item => '<li>' + item + '</li>');
+            htmlList.innerHTML = content.join('');
+        }
+
+        render();
+    </script>
+</body>
+</html>
