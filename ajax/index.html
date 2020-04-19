@@ -22,11 +22,10 @@
         var input = document.getElementById('new-item');
         btn.addEventListener('click', addItem);
         function addItem(){
-            var newItem = input.value;
-            todoList.push(newItem);
-            render();
-            input.value = '';
-            localStorage.setItem(storageKey, JSON.stringify(todoList));
+            var newItem = {content: input.value};
+            axios.post(url, newItem).then(item =>{
+                console.log('Item saved', item);
+            })
         }
 
         function render(items){
